@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+ 	<!-- Appender para la salida por consola -->
+	<appender name="R" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- <param name="ConversionPattern" value="%d|%p|%c{1}.%M:%L|%m|%.15t|%r|%x%n"/> -->
+			<param name="ConversionPattern" value="%d|%p|%c.%M:%L|%m|%.15t|%r|%x%n"/>
+		</layout>
+	</appender>	
+
+    <category name="com.novayre.commons">
+    	<level value="ERROR" />
+    </category>
+
+    <!--  Definicion de la categoria de la aplicación 
+    <category name="com.novayre.fps">
+    	<level value="INFO" />
+    </category>
+-->
+    <!--  Definicion de la categoria de spring -->
+    <category name="org.springframework">
+    	<level value="ERROR" />
+    </category>
+
+    <!--  Definicion de la categoria de hibernate -->
+    <category name="org.hibernate">
+    	<level value="ERROR" />
+    </category>
+    
+    <!-- SQL -->
+    <category name="org.hibernate.SQL">
+    	<level value="ERROR" />
+    </category>
+    
+    <!-- Parametros y resultados -->
+    <category name="org.hibernate.type">
+    	<level value="ERROR" />
+    </category>
+
+    <!-- AST -->
+    <category name="org.hibernate.hql.ast.AST">
+    	<level value="ERROR" />
+    </category>
+
+    <!-- Transacciones -->
+    <category name="org.hibernate.transaction">
+    	<level value="ERROR" />
+    </category>
+    <category name="org.springframework.transaction">
+    	<level value="ERROR" />
+    </category>
+
+    <!-- JDBC -->
+    <category name="org.hibernate.jdbc">
+    	<level value="ERROR" />
+    </category>
+    
+    <!--  Myfaces -->
+    <category name="org.apache.myfaces">
+    	<level value="ERROR" />
+    </category>
+    
+   	<!-- Definicion de la categoria root y los appenders asociados -->
+   	<root>
+        <level value="INFO" />
+        <appender-ref ref="R"/>
+    </root>
+</log4j:configuration>

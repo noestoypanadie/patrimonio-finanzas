@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<assembly>  
+    <id>standaloneapp-dist-format</id>  
+  
+    <!-- 
+        http://maven.apache.org/plugins/maven-assembly-plugin/assembly.html 
+    -->  
+    <formats>  
+        <!-- La salida sera un directorio -->  
+        <format>dir</format>  
+    </formats>  
+  
+    <!--  
+        Generara la salida a la carpeta dist al mismo nivel del pom.xml.
+    -->  
+    <baseDirectory>../../dist</baseDirectory>  
+  
+    <fileSets>  
+        <!--  
+            Copiamos todos los jar del directorio "target" (donde compila maven)  
+            al directorio de salida "baseDirectory" es decir, solo copiara el jar  
+            propio de la aplicacion  
+        -->  
+        <fileSet>  
+            <directory>target</directory>  
+            <outputDirectory>.</outputDirectory>  
+            <includes>  
+                <include>*.jar</include>  
+            </includes>  
+        </fileSet>  
+    </fileSets>  
+  
+    <dependencySets>  
+        <dependencySet>  
+            <!-- Las dependencias iran al directorio lib -->  
+            <outputDirectory>lib</outputDirectory>  
+  
+            <!--  
+                Que genere las dependencias como JAR y no como .class en sus  
+                subdirectorios  
+            -->  
+            <unpack>false</unpack>  
+  
+            <!-- Que solo genere las dependencias runtime -->  
+            <scope>runtime</scope>  
+  
+            <!-- 
+                El JAR propio de la aplicacion no lo incluimos en el directorio lib 
+            -->  
+            <excludes>  
+                <exclude>${groupId}:${artifactId}</exclude>  
+            </excludes>  
+        </dependencySet>  
+    </dependencySets>  
+</assembly> 
+
